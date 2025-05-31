@@ -1,0 +1,57 @@
+arr = [38, 27, 43, 3, 9, 82, 10]
+
+
+def rearrange(a,b):
+	
+		i=0
+		j=0
+		sort=[]
+		
+		while len(sort)!=(len(a)+len(b)):
+			if i!=len(a) and j!=len(b):
+
+				if a[i]<b[j]:
+					sort.append(a[i])
+					i+=1
+				else:
+					sort.append(b[j])
+					j+=1
+
+			elif i==len(a):
+				for k in range(j,len(b)):
+					sort.append(b[k])
+			elif j==len(b):
+				for k in range(i,len(a)):
+					sort.append(a[k])
+
+
+
+		return sort
+
+
+
+
+
+
+
+
+def mergesort(arr):
+
+	if len(arr) != 1:
+		h=len(arr)//2
+		f=mergesort(arr[0:h])
+		s=mergesort(arr[h:])
+		
+		return rearrange(f,s)
+
+
+
+
+
+		
+	else:
+		return arr
+
+
+
+print(mergesort(arr))
